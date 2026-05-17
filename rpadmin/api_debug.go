@@ -29,6 +29,8 @@ const (
 	NetcheckTagIdentifier = "network"
 	// CloudcheckTagIdentifier is the type identifier for cloud self tests.
 	CloudcheckTagIdentifier = "cloud"
+	// IcebergcheckTagIdentifier is the type identifier for iceberg self tests.
+	IcebergcheckTagIdentifier = "iceberg"
 
 	// DebugBundleErrorCodeOk no error.
 	DebugBundleErrorCodeOk = 0
@@ -132,6 +134,14 @@ type CloudcheckParameters struct {
 	TimeoutMs uint `json:"timeout_ms"`
 	// Backoff duration of a network request
 	BackoffMs uint `json:"backoff_ms"`
+	// Filled in automatically by the \ref StartSelfTest method
+	Type string `json:"type"`
+}
+
+// IcebergcheckParameters describes what parameters redpanda will use when starting the icebergcheck benchmark.
+type IcebergcheckParameters struct {
+	// Descriptive name given to test run
+	Name string `json:"name"`
 	// Filled in automatically by the \ref StartSelfTest method
 	Type string `json:"type"`
 }
